@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init:/docker-entrypoint-initdb.d
+
+  userservice:
+    build:
+      context: ./src
+      dockerfile: UserService/UserService.Api/Dockerfile
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: userdb   
+      DOTNET_ENVIRONMENT: Development
+    depends_on:
+      - postgres
+    expose:
+      - "80"
+
+  financeservice:
+    build:
+      context: ./src
+      dockerfile: FinanceService/FinanceService.Api/Dockerfile
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: financedb
+      DOTNET_ENVIRONMENT: Development
+    depends_on:
+      - postgres
+    expose:
+      - "80"
+
+  gateway:
+    build:
+      context: ./src
+      dockerfile: Gateway/Dockerfile
+    ports:
+       - "8081:80"
+    depends_on:
+      - userservice
+      - financeservice
+
+volumes:
+  postgres_data:

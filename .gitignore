@@ -1,0 +1,112 @@
+# Build
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.log
+*.pdb
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# User-specific
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Visual Studio
+.vs/
+*.dbmdl
+*.bak
+*.ldf
+*.ndf
+*.rdl.data
+*.rdl.designer.cs
+*.rdl.wrk
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Dotnet
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.deps.json
+*.runtimeconfig.json
+*.runtimeconfig.dev.json
+*.csproj.user
+*.csproj.nuget.*
+*.nuget.props
+*.nuget.targets
+
+# Docker
+*.pid
+.env
+docker-compose.override.yml
+**/Dockerfile.*.temp
+
+# Logs
+logs/
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+
+# Entity Framework
+Migrations/*Designer.cs
+Migrations/*Snapshot.cs
+
+# Tests
+TestResult.xml
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# NCrunch
+_NCrunch_*/
+.*crunch*.local.xml
+
+# Resharper
+_ReSharper*/
+*.ReSharper
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+*.nuproj
+*.psmdcp
+.nuget/
+packages/
+!**/packages/build/
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.nfs*
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Secrets
+appsettings.Development.json
+appsettings.*.local.json
+*.secret.json
